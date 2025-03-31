@@ -1,0 +1,37 @@
+DOGE
+Deployer: 0x3D129878377e90145A839A2257CDFC311C71ccD2
+Deployed to: 0xBC09e9205841c4CB0b20AE98BD97AE2c95f6DFc0
+Transaction hash: 0x8bfd8380a5d4f4307a43ad3bd7594bee186850122683e70bda586e7d8824f5a0
+
+forge create --rpc-url $ETH_RPC_URL --private-key $PRIVATE_KEY src/Doge.sol:Doge --broadcast --constructor-args $DOGE_METADATA 
+
+cast send 0xBC09e9205841c4CB0b20AE98BD97AE2c95f6DFc0 \
+    --rpc-url $ETH_RPC_URL \
+    --private-key $PRIVATE_KEY \
+    "mint(address,uint256)" 0x3D129878377e90145A839A2257CDFC311C71ccD2 100000000000000000000
+
+
+WDOGE
+Deployer: 0x3D129878377e90145A839A2257CDFC311C71ccD2
+Deployed to: 0x951bA7E774eCC997eEc79F7A64964eb69686006B
+Transaction hash: 0x610b6db1dbfb272941b8b9ff7830a492cfa24aa4f95e8d375e0ed9d79df421d9
+
+forge create --rpc-url $OP_RPC_URL --private-key $PRIVATE_KEY src/WDoge.sol:WDoge --broadcast --constructor-args $WDOGE_METADATA
+
+cast send 0x951bA7E774eCC997eEc79F7A64964eb69686006B \
+    --rpc-url $OP_RPC_URL \
+    --private-key $PRIVATE_KEY \
+    "mint(address,uint256)" 0x3D129878377e90145A839A2257CDFC311C71ccD2 100000000000000000000
+
+
+BRIDGEETH
+
+forge create --rpc-url $ETH_RPC_URL \
+    --private-key $PRIVATE_KEY \
+    src/BridgeETH.sol:BridgeETH \
+    --broadcast \
+    --constructor-args 0xBC09e9205841c4CB0b20AE98BD97AE2c95f6DFc0 
+
+Deployer: 0x3D129878377e90145A839A2257CDFC311C71ccD2
+Deployed to: 0x951bA7E774eCC997eEc79F7A64964eb69686006B
+Transaction hash: 0xdd12c4d1cbf77fd32f2dbdf98c9870109d9944707430963b0ad47cedf3075136
